@@ -4,6 +4,7 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
+      "defaultValue": "sergio",
       "metadata": {
         "description": "User name for the Virtual Machine."
       }
@@ -319,7 +320,31 @@
           }
         }
       }
-    }
+    },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vm2_vmName'), '/', parameters('extensions_CustomScriptForLinux_name'))]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "westeurope",
+            "scale": null,
+            "properties": {
+                "publisher": "Microsoft.OSTCExtensions",
+                "type": "[parameters('extensions_CustomScriptForLinux_name')]",
+                "typeHandlerVersion": "1.4",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "https://segonza.blob.core.windows.net/scripts/installApache.sh"
+                    ]
+                },
+                "protectedSettings": {
+                    "commandToExecute": "installApache.sh"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2_vmName'))]"
+            ]
+        }
   ],
   "outputs": {
     "vm1_hostname": {
