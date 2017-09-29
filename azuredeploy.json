@@ -323,13 +323,13 @@
     },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vm2_vmName'), '/', parameters('extensions_CustomScriptForLinux_name'))]",
+            "name": "[concat(variables('vm2_vmName'), '/', "CustomScriptForLinux" )]",
             "apiVersion": "2016-04-30-preview",
             "location": "westeurope",
             "scale": null,
             "properties": {
                 "publisher": "Microsoft.OSTCExtensions",
-                "type": "[parameters('extensions_CustomScriptForLinux_name')]",
+                "type": "CustomScriptForLinux",
                 "typeHandlerVersion": "1.4",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
