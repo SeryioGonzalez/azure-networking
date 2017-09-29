@@ -338,7 +338,7 @@
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "installApache.sh"
+                    "commandToExecute": "sh installApache.sh"
                 }
             },
             "dependsOn": [
