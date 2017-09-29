@@ -323,7 +323,7 @@
     },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vm2_vmName'), '/', "CustomScriptForLinux" )]",
+            "name": "[concat(variables('vm2_vmName'), '/', 'CustomScriptForLinux' )]",
             "apiVersion": "2016-04-30-preview",
             "location": "westeurope",
             "scale": null,
