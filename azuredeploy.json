@@ -245,6 +245,21 @@
           "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1_vmName'))]"
       ]
    },
+   {
+      "type": "extensions",
+      "name": "Microsoft.Azure.NetworkWatcher",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[concat('Microsoft.Compute/virtualMachines/', variables('vm1_vmName'))]"
+      ],
+      "properties": {
+          "publisher": "Microsoft.Azure.NetworkWatcher",
+          "type": "NetworkWatcherAgentWindows",
+          "typeHandlerVersion": "1.4",
+          "autoUpgradeMinorVersion": true
+      }
+    },
 
     {
       "apiVersion": "2017-04-01",
