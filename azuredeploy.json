@@ -225,8 +225,7 @@
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(variables('vm1_vmName'), '/', 'CustomScriptForLinux' )]",
       "apiVersion": "2016-04-30-preview",
-      "location": "westeurope",
-      "scale": null,
+      "location": "[resourceGroup().location]",
       "properties": {
           "publisher": "Microsoft.OSTCExtensions",
           "type": "CustomScriptForLinux",
@@ -250,15 +249,15 @@
       "name": "Microsoft.Azure.NetworkWatcher",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-          "[concat('Microsoft.Compute/virtualMachines/', variables('vm1_vmName'))]"
-      ],
       "properties": {
           "publisher": "Microsoft.Azure.NetworkWatcher",
           "type": "NetworkWatcherAgentWindows",
           "typeHandlerVersion": "1.4",
           "autoUpgradeMinorVersion": true
-      }
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vm1_vmName'))]"
+      ]
     },
 
     {
