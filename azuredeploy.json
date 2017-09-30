@@ -248,7 +248,7 @@
    {
       "type": "Microsoft.Network/networkWatchers",
       "name": "Microsoft.Azure.NetworkWatcher",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
           "[concat('Microsoft.Compute/virtualMachines/', variables('vm1_vmName'))]"
