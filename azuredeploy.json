@@ -246,7 +246,7 @@
    },
    {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "Microsoft.Azure.NetworkWatcher",
+      "name": "[concat(variables('vm1_vmName'), '/', 'NetworkWatcher' )]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "properties": {
