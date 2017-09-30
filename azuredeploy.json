@@ -221,7 +221,31 @@
         }
       }
     },
-    
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(variables('vm1_vmName'), '/', 'CustomScriptForLinux' )]",
+      "apiVersion": "2016-04-30-preview",
+      "location": "westeurope",
+      "scale": null,
+      "properties": {
+          "publisher": "Microsoft.OSTCExtensions",
+          "type": "CustomScriptForLinux",
+          "typeHandlerVersion": "1.4",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+              "fileUris": [
+                  "https://segonza.blob.core.windows.net/scripts/installApache.sh"
+              ]
+          },
+          "protectedSettings": {
+              "commandToExecute": "sh installApache.sh"
+          }
+      },
+      "dependsOn": [
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1_vmName'))]"
+      ]
+   },
+
     {
       "apiVersion": "2017-04-01",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -321,30 +345,30 @@
         }
       }
     },
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vm2_vmName'), '/', 'CustomScriptForLinux' )]",
-            "apiVersion": "2016-04-30-preview",
-            "location": "westeurope",
-            "scale": null,
-            "properties": {
-                "publisher": "Microsoft.OSTCExtensions",
-                "type": "CustomScriptForLinux",
-                "typeHandlerVersion": "1.4",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "fileUris": [
-                        "https://segonza.blob.core.windows.net/scripts/installApache.sh"
-                    ]
-                },
-                "protectedSettings": {
-                    "commandToExecute": "sh installApache.sh"
-                }
+    {
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "name": "[concat(variables('vm2_vmName'), '/', 'CustomScriptForLinux' )]",
+        "apiVersion": "2016-04-30-preview",
+        "location": "westeurope",
+        "scale": null,
+        "properties": {
+            "publisher": "Microsoft.OSTCExtensions",
+            "type": "CustomScriptForLinux",
+            "typeHandlerVersion": "1.4",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+                "fileUris": [
+                    "https://segonza.blob.core.windows.net/scripts/installApache.sh"
+                ]
             },
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2_vmName'))]"
-            ]
-        }
+            "protectedSettings": {
+                "commandToExecute": "sh installApache.sh"
+            }
+        },
+        "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2_vmName'))]"
+        ]
+    }
   ],
   "outputs": {
     "vm1_hostname": {
