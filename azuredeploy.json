@@ -246,7 +246,7 @@
       ]
    },
    {
-      "type": "extensions",
+      "type": "Microsoft.Network/networkWatchers",
       "name": "Microsoft.Azure.NetworkWatcher",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
