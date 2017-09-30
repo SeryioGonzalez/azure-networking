@@ -32,4 +32,8 @@ openssl req -new -key $device_keyFile -out $device_csrFile -subj "/C=ES/L=Las Pa
 openssl x509 -req -in $device_csrFile -CA $CA_cerFile -CAkey $CA_keyFile -CAcreateserial -out $device_cerFile -days 500 -sha256
 
 #We deliver a PFX wrapper with private, public key, certificate and CA certificate
+<<<<<<< HEAD
 openssl pkcs12 -export -out $device_pfxFile -inkey $device_keyFile -in $device_cerFile -certfile $CA_cerFile
+=======
+openssl pkcs12 -export -out $device_pfxFile -inkey $device_keyFile -in $device_cerFile -certfile $CA_cerFile
+>>>>>>> e7d59c310e3728a050178ab59629be17e6850ad6
