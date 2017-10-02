@@ -5,6 +5,8 @@ CA_name="seryio.es-CA"
 #CrypFolder for storing potentially sensitive file
 crypFolder="cryp/"
 
+mkdir -p $crypFolder
+
 #Certificates are about key pairs
 #The sacred private key
 CA_keyFile=$crypFolder$CA_name".key"
