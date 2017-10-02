@@ -138,8 +138,7 @@
           "publicIPAddressVersion": "IPv4",
           "publicIPAllocationMethod": "Dynamic",
           "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
+      }
     },
  
     {
