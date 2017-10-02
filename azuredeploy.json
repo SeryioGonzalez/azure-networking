@@ -484,7 +484,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('vm2.1_vmName'), '/', 'CustomScriptForLinux' )]",
+      "name": "[concat(variables('vm1.2_vmName'), '/', 'CustomScriptForLinux' )]",
       "apiVersion": "2016-04-30-preview",
       "location": "[resourceGroup().location]",
       "properties": {
@@ -502,7 +502,7 @@
           }
       },
       "dependsOn": [
-          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]"
       ]
     },
 
