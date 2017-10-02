@@ -11,7 +11,7 @@
     },
     "sshPublicKey": {
       "type": "string",
-      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbQcvva0xhekOWsWCmFENG6C+vqnWfj9ZfdyF/ADFYeRmSOFmphr3+nlmdkekWsHOQ0B9oyo0YOhrf4et6Y0W8bWc1d/243Nl9Jb3DyWp2mhQYF+xnNB86fwFBz7uork0LdX05D+dAbSEO+OOtKPZfwFiUMYhfjgYdmeeZb0TYr4fXTG77ROnow+QkHM38EExff3gPY7S9cWq19mqUSCNeq+NNDyExLFwVhRVepsPz9Ufw3qmXEl3mvvjugv1j0KzliFWtn1WJjXGyR3HKn8ib6fglhrGGpY0qSeb2gDUmpXObK16zEjHDE1Qs72x2LVNjKWEbffv3TuOlbwP7ENvB sergio@MININT-SCP2P2V"
+      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKlMlDqCEYmtD3NzHTzQXcu9Oj3U+CKYCU4D+kwEN5BuKs5J9lPFA9B2MsK9MYsyXoG4Gkt3ENHyzY+dgCN3eLdyiyOAtpHKddqO+5CG3mZoTlONTSofZm2pbnCoWh8UdKlBUvD467gFbw+HcBnXXY89zhdBIkhjQELcuZc0je8XsYrw++9DEJW9GBlREE8E/RustYlF5/MsNHvIxZqKNhBocX4Cj/nUdV+aGxTMa4pEnFi8gDA8xuYK9mDA/GNFd47TMa6kd+YLlojlfzp1GGDiwDK1px1TpjjzXan/dMMFbCsL5dgpuFul34U0yOdg7iEgoAUUwTGvHQsMyIl+BJ sergio@MININT-SCP2P2V"
     },
     "ubuntuOSVersion": {
       "type": "string",
