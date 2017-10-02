@@ -202,9 +202,6 @@
     },
     {
       "type": "Microsoft.Compute/availabilitySets",
-      "sku": {
-          "name": "Aligned"
-      },
       "name": "avsetvnet2",
       "apiVersion": "2016-04-30-preview",
       "location": "westeurope",
