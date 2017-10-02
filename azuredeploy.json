@@ -403,10 +403,10 @@
     {
       "apiVersion": "2017-04-01",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[variables('vm2.1_nicName')]",
+      "name": "[variables('vm1.2_nicName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnet1_vnetName'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnet2_vnetName'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -425,18 +425,18 @@
     {
       "apiVersion": "2017-03-30",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[variables('vm2.1_vmName')]",
+      "name": "[variables('vm1.2_vmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces/', variables('vm2.1_nicName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces/', variables('vm1.2_nicName'))]"
       ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[variables('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vm2.1_vmName')]",
+          "computerName": "[variables('vm1.2_vmName')]",
           "adminUsername": "[parameters('adminUserName')]",
           "linuxConfiguration": {
             "disablePasswordAuthentication": "true",
@@ -471,7 +471,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('vm2.1_nicName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('vm1.2_nicName'))]"
             }
           ]
         },
