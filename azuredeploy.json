@@ -494,7 +494,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
               "fileUris": [
-                  "https://segonza.blob.core.windows.net/scripts/installApache.sh"
+                  "https://segonza.blob.core.windows.net/scripts/installApache.sh" 
               ]
           },
           "protectedSettings": {
