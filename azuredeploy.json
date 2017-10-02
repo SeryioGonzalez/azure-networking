@@ -57,15 +57,11 @@
     "vnet2_subnetRef": "[concat(variables('vnet2_ID'),'/subnets/',variables('vnet2_subnetName'))]",
 
     "vm1_nicName": "vm1Nic",
-    "vm1_publicIPAddressName": "vm1PublicIP",
     "vm1_vmName": "ubuntuvm1",
-    "vm1_dnsLabelPrefix": "[concat(variables('vm1_vmName'),'-',parameters('dnsLabelPrefix'))]",
-
+    
     "vm2_nicName": "vm2Nic",
-    "vm2_publicIPAddressName": "vm2PublicIP",
     "vm2_vmName": "ubuntuvm2",
-    "vm2_dnsLabelPrefix": "[concat(variables('vm2_vmName'),'-',parameters('dnsLabelPrefix'))]"
-
+    
   },
   "resources": [
     {
@@ -124,23 +120,10 @@
 
     {
       "apiVersion": "2017-04-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('vm1_publicIPAddressName')]",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-        "dnsSettings": {
-          "domainNameLabel": "[variables('vm1_dnsLabelPrefix')]"
-        }
-      }
-    },
-    {
-      "apiVersion": "2017-04-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('vm1_nicName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('vm1_publicIPAddressName'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnet1_vnetName'))]"
       ],
       "properties": {
@@ -149,9 +132,6 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('vm1_publicIPAddressName'))]"
-              },
               "subnet": {
                 "id": "[variables('vnet1_subnetRef')]"
               }
@@ -262,23 +242,10 @@
 
     {
       "apiVersion": "2017-04-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('vm2_publicIPAddressName')]",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-        "dnsSettings": {
-          "domainNameLabel": "[variables('vm2_dnsLabelPrefix')]"
-        }
-      }
-    },
-    {
-      "apiVersion": "2017-04-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('vm2_nicName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('vm2_publicIPAddressName'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnet2_vnetName'))]"
       ],
       "properties": {
@@ -287,9 +254,6 @@
             "name": "ipconfig2",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('vm2_publicIPAddressName'))]"
-              },
               "subnet": {
                 "id": "[variables('vnet2_subnetRef')]"
               }
@@ -383,23 +347,5 @@
             "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2_vmName'))]"
         ]
     }
-  ],
-  "outputs": {
-    "vm1_hostname": {
-      "type": "string",
-      "value": "[reference(variables('vm1_publicIPAddressName')).dnsSettings.fqdn]"
-    },
-    "vm1_sshCommand": {
-      "type": "string",
-      "value": "[concat('ssh ', parameters('adminUsername'), '@', reference(variables('vm1_publicIPAddressName')).dnsSettings.fqdn)]"
-    },
-    "vm2_hostname": {
-      "type": "string",
-      "value": "[reference(variables('vm2_publicIPAddressName')).dnsSettings.fqdn]"
-    },
-    "vm2_sshCommand": {
-      "type": "string",
-      "value": "[concat('ssh ', parameters('adminUsername'), '@', reference(variables('vm2_publicIPAddressName')).dnsSettings.fqdn)]"
-    }
-  }
+  ]
 }
