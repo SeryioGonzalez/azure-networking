@@ -578,7 +578,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('vm1.2_nicName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('vm2.2_nicName'))]"
             }
           ]
         },
