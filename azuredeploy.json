@@ -378,7 +378,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(variables('vm2.1_vmName'), '/', 'CustomScriptForLinux' )]",
-      "apiVersion": "2016-04-30-preview",
+      "apiVersion": "2016-04-30-preview", 
       "location": "[resourceGroup().location]",
       "properties": {
           "publisher": "Microsoft.OSTCExtensions",
