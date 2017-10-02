@@ -34,12 +34,17 @@
     "imageOffer": "UbuntuServer",
     "vmSize": "Standard_DS1_V2",
 
+    "virtualNetworkGateways_vnetGW_name": "vnet1gw",
+    "publicIPAddresses_vnetGWIP_name": "vnetgwpubip",
+
     "vnet1_netPrefix": "10.0.0.0/16",
     "vnet1_vnetName": "vnet1",
     "vnet1_ID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnet1_vnetName'))]",
     "vnet1_subnetPrefix": "10.0.0.0/24",
     "vnet1_subnetName": "vnet1_subnet1",
     "vnet1_subnetRef": "[concat(variables('vnet1_ID'),'/subnets/',variables('vnet1_subnetName'))]",
+    "vnet1_GWsubnetName": "vnet1_GWsubnet1",
+    "vnet1_GWsubnetPrefix": "10.0.1.0/24",
 
     "vnet2_netPrefix": "10.1.0.0/16",
     "vnet2_vnetName": "vnet2",
@@ -89,6 +94,12 @@
             "properties": {
               "addressPrefix": "[variables('vnet1_subnetPrefix')]"
             }
+          },
+          {
+            "name": "[variables('vnet1_GWsubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('vnet1_GWsubnetPrefix')]"
+            }
           }
         ]
       }
@@ -114,6 +125,67 @@
         ]
       }
     },
+    
+    {
+        "comments": "Generalized from resource: '/subscriptions/ca3d18ab-d373-4afb-a5d6-7c44f098d16a/resourceGroups/demoRG/providers/Microsoft.Network/virtualNetworkGateways/vnetGW'.",
+        "type": "Microsoft.Network/virtualNetworkGateways",
+        "name": "[variables('virtualNetworkGateways_vnetGW_name')]",
+        "apiVersion": "2017-06-01",
+        "location": "westeurope",
+        "scale": null,
+        "properties": {
+            "resourceGuid": "c11d1065-51a2-4f29-848c-e693b8902092",
+            "ipConfigurations": [
+                {
+                    "name": "default",
+                    "etag": "W/\"1628402b-e92b-48f2-854c-0988550e08a1\"",
+                    "properties": {
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIPAddress": {
+                            "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddresses_vnetGWIP_name'))]"
+                        },
+                        "subnet": {
+                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), variables('vnet1_GWsubnetName'))]"
+                        }
+                    }
+                }
+            ],
+            "sku": {
+                "name": "VpnGw1",
+                "tier": "VpnGw1",
+                "capacity": 2
+            },
+            "gatewayType": "Vpn",
+            "vpnType": "RouteBased",
+            "enableBgp": false,
+            "activeActive": false,
+            "vpnClientConfiguration": {
+                "vpnClientProtocols": [],
+                "vpnClientRootCertificates": [],
+                "vpnClientRevokedCertificates": []
+            }
+        },
+        "dependsOn": [
+            "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddresses_vnetGWIP_name'))]",
+            "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), variables('vnet1_GWsubnetName'))]"
+        ]
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('publicIPAddresses_vnetGWIP_name')]",
+      "apiVersion": "2017-06-01",
+      "location": "westeurope",
+      "scale": null,
+      "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "323288e8-1cb4-4e6a-8e27-c082cbbd1910",
+          "publicIPAddressVersion": "IPv4",
+          "publicIPAllocationMethod": "Dynamic",
+          "idleTimeoutInMinutes": 4
+      },
+      "dependsOn": []
+    },
+
 
     {
       "apiVersion": "2017-04-01",
