@@ -43,7 +43,6 @@
     "vnet1_subnetPrefix": "10.0.0.0/24",
     "vnet1_subnetName": "vnet1_subnet1",
     "vnet1_subnetRef": "[concat(variables('vnet1_ID'),'/subnets/',variables('vnet1_subnetName'))]",
-    "vnet1_GWsubnetName": "vnet1_GWsubnet1",
     "vnet1_GWsubnetPrefix": "10.0.1.0/24",
 
     "vnet2_netPrefix": "10.1.0.0/16",
@@ -96,7 +95,7 @@
             }
           },
           {
-            "name": "[variables('vnet1_GWsubnetName')]",
+            "name": "GatewaySubnet",
             "properties": {
               "addressPrefix": "[variables('vnet1_GWsubnetPrefix')]"
             }
@@ -144,7 +143,7 @@
                             "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddresses_vnetGWIP_name'))]"
                         },
                         "subnet": {
-                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), variables('vnet1_GWsubnetName'))]"
+                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), 'GatewaySubnet')]"
                         }
                     }
                 }
@@ -166,7 +165,7 @@
         },
         "dependsOn": [
             "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddresses_vnetGWIP_name'))]",
-            "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), variables('vnet1_GWsubnetName'))]"
+            "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet1_vnetName'), 'GatewaySubnet')]"
         ]
     },
     {
