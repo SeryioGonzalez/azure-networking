@@ -48,17 +48,17 @@
     "vnet2_subnetName": "vnet2_subnet1",
     "vnet2_subnetRef": "[concat(variables('vnet2_ID'),'/subnets/',variables('vnet2_subnetName'))]",
 
-    "vm1.1_nicName": "vm1.vnet1.nic",
-    "vm1.1_vmName": "vm1.vnet1",
+    "vm1.1_nicName": "vm1vnet1nic",
+    "vm1.1_vmName": "vm1vnet1",
     
-    "vm2.1_nicName": "vm2.vnet1.nic",
-    "vm2.1_vmName": "vm2.vnet1",
+    "vm2.1_nicName": "vm2vnet1nic",
+    "vm2.1_vmName": "vm2vnet1",
     
-    "vm1.2_nicName": "vm1.vnet2.nic",
-    "vm1.2_vmName": "vm1.vnet2",
+    "vm1.2_nicName": "vm1vnet2.nic",
+    "vm1.2_vmName": "vm1vnet2",
     
-    "vm2.2_nicName": "vm2.vnet2.nic",
-    "vm2.2_vmName": "vm2.vnet2"
+    "vm2.2_nicName": "vm2vnet2nic",
+    "vm2.2_vmName": "vm2vnet2"
   },
   "resources": [
     {
