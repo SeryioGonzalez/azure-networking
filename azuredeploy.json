@@ -194,10 +194,7 @@
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
-          "virtualMachines": [
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.1_vmName'))]"},
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"}
-          ]
+          "managed": true
       }
     },
     {
@@ -208,10 +205,7 @@
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
-          "virtualMachines": [
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]"},
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.2_vmName'))]"}
-          ]
+          "managed": true
       }
     },
 
@@ -464,9 +458,13 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces/', variables('vm1.2_nicName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces/', variables('vm1.2_nicName'))]",
+        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet2')]"
       ],
       "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet2')]"
+        },
         "hardwareProfile": {
           "vmSize": "[variables('vmSize')]"
         },
@@ -516,10 +514,7 @@
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet2')]"
-      ]
+      }
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
