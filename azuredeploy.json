@@ -191,7 +191,6 @@
       "name": "avsetvnet1",
       "apiVersion": "2016-04-30-preview",
       "location": "westeurope",
-      "scale": null,
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
@@ -209,7 +208,6 @@
       "name": "avsetvnet2",
       "apiVersion": "2016-04-30-preview",
       "location": "westeurope",
-      "scale": null,
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
