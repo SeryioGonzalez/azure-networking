@@ -195,15 +195,8 @@
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
-          "virtualMachines": [
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.1_vmName'))]"},
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"}
-          ]
-      },
-      "dependsOn": [
-          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.1_vmName'))]",
-          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"
-      ]
+          "managed": "true"
+      }
     },
     {
       "type": "Microsoft.Compute/availabilitySets",
@@ -217,15 +210,8 @@
       "properties": {
           "platformUpdateDomainCount": 5,
           "platformFaultDomainCount": 2,
-          "virtualMachines": [
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]"},
-              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.2_vmName'))]"}
-          ]
-      },
-      "dependsOn": [
-          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]",
-          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.2_vmName'))]"
-      ]
+          "managed": "true"
+      }
     },
 
     {
