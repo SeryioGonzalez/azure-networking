@@ -184,6 +184,51 @@
     },
  
     {
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+          "name": "Aligned"
+      },
+      "name": "avsetvnet1",
+      "apiVersion": "2016-04-30-preview",
+      "location": "westeurope",
+      "scale": null,
+      "properties": {
+          "platformUpdateDomainCount": 5,
+          "platformFaultDomainCount": 2,
+          "virtualMachines": [
+              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.1_vmName'))]"},
+              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"}
+          ]
+      },
+      "dependsOn": [
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.1_vmName'))]",
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.1_vmName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "sku": {
+          "name": "Aligned"
+      },
+      "name": "avsetvnet2",
+      "apiVersion": "2016-04-30-preview",
+      "location": "westeurope",
+      "scale": null,
+      "properties": {
+          "platformUpdateDomainCount": 5,
+          "platformFaultDomainCount": 2,
+          "virtualMachines": [
+              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]"},
+              { "id": "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.2_vmName'))]"}
+          ]
+      },
+      "dependsOn": [
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm1.2_vmName'))]",
+          "[resourceId('Microsoft.Compute/virtualMachines', variables('vm2.2_vmName'))]"
+      ]
+    },
+
+    {
       "apiVersion": "2017-04-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('vm1.1_nicName')]",
@@ -264,7 +309,10 @@
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet1')]"
+      ]
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -371,7 +419,10 @@
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet1')]"
+      ]
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -478,7 +529,10 @@
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet2')]"
+      ]
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -585,7 +639,10 @@
             "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/availabilitySets', 'avsetvnet2')]"
+      ]
     },
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
