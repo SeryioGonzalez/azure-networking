@@ -1,8 +1,24 @@
 # Azure Networking Deep Dive
 
-The files in this repo pretend to support the configuration of a full networked environment
+In this lab, we will build step by step a full networking topology on Azure
 
-# Create the basic environment
+
+# Table of Contents
+
+[Objectives and initial setup](#objectives)
+
+[Introduction to Azure Networking](#intro)
+
+**[Part 0: First steps](#part0)**
+
+- [Lab 0: Deploy the VMs](#lab0)
+
+- [Lab 1: Explore Lab environment](#lab1)
+
+[References](#ref)
+
+
+# Deploy the initial topology <a name="part0"></a>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FSeryioGonzalez%2Fazure-networking%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
