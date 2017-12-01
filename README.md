@@ -20,6 +20,6 @@ In this lab, we will build step by step a full networking topology on Azure
 
 # Deploy the initial topology <a name="part0"></a>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FSeryioGonzalez%2Fazure-networking%2Fmaster%2Fazuredeploy.json" target="_blank">
+<a href="https://ms.portal.azure.com/microsoft.onmicrosoft.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FSeryioGonzalez%2Fazure-networking%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
